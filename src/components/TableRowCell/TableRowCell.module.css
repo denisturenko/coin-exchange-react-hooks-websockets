@@ -1,0 +1,11 @@
+.more {
+  background-color: var(--color-success);
+  color: var(--color-success-dark);
+  font-weight: bold;
+}
+
+.less {
+  background-color: var(--color-error);
+  color: var(--color-error-dark);
+  font-weight: bold;
+}

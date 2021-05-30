@@ -1,0 +1,12 @@
+.root {
+  height: 20px;
+  background-color: transparent;
+}
+
+.root td {
+  padding: 10px 12px 6px;
+}
+
+.root:nth-child(odd) {
+  background-color: var(--color-bg2);
+}

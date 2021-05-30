@@ -1,0 +1,20 @@
+.lightTheme {
+  --color-primary: rgb(0, 0, 0);
+  --color-secondary: rgb(74, 96, 215);
+  --color-success: #36da82;
+  --color-success-dark: #007536;
+  --color-error: #ff9073;
+  --color-error-dark: #a62300;
+  --color-bg: rgb(255, 255, 255);
+  --color-bg2: rgba(0, 0, 6, 0.03);
+}
+.darkTheme {
+  --color-primary: rgb(187, 187, 187);
+  --color-secondary: rgb(166, 144, 0);
+  --color-success: #007536;
+  --color-success-dark: #36da82;
+  --color-error: #a62300;
+  --color-error-dark: #ff9073;
+  --color-bg: rgb(51, 51, 51);
+  --color-bg2: rgb(32, 32, 32);
+}

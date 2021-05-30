@@ -1,0 +1,18 @@
+.root {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
+  margin-top: 40px;
+  flex: 0 0 100%;
+  max-width: 890px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}

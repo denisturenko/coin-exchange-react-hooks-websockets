@@ -1,0 +1,5 @@
+.root {
+  cursor: pointer;
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
