@@ -5,7 +5,7 @@ import PageExchangeQuotesLayout from './layout/PageExchangeQuotesLayout';
 import useProps from './hooks/useProps';
 import useBodyClass from '../../hooks/use-body-class/useBodyClass';
 
-const LIMIT = 50;
+const LIMIT = 25;
 
 function PageExchangeQuotes() {
   const { theme, limit, sortType, sortOrder, filteredData, onLimitToggle, onThemeToggle, isLightTheme, onSort } =
