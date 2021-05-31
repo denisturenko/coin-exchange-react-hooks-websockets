@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/coin-exchange-react-hooks-websockets/static/css/main.dfa67e62.chunk.css",
-    "main.js": "/coin-exchange-react-hooks-websockets/static/js/main.57d529ea.chunk.js",
-    "main.js.map": "/coin-exchange-react-hooks-websockets/static/js/main.57d529ea.chunk.js.map",
+    "main.js": "/coin-exchange-react-hooks-websockets/static/js/main.97a4b738.chunk.js",
+    "main.js.map": "/coin-exchange-react-hooks-websockets/static/js/main.97a4b738.chunk.js.map",
     "runtime-main.js": "/coin-exchange-react-hooks-websockets/static/js/runtime-main.9e908134.js",
     "runtime-main.js.map": "/coin-exchange-react-hooks-websockets/static/js/runtime-main.9e908134.js.map",
-    "static/js/2.dca73793.chunk.js": "/coin-exchange-react-hooks-websockets/static/js/2.dca73793.chunk.js",
-    "static/js/2.dca73793.chunk.js.map": "/coin-exchange-react-hooks-websockets/static/js/2.dca73793.chunk.js.map",
+    "static/js/2.315aaed6.chunk.js": "/coin-exchange-react-hooks-websockets/static/js/2.315aaed6.chunk.js",
+    "static/js/2.315aaed6.chunk.js.map": "/coin-exchange-react-hooks-websockets/static/js/2.315aaed6.chunk.js.map",
     "index.html": "/coin-exchange-react-hooks-websockets/index.html",
     "static/css/main.dfa67e62.chunk.css.map": "/coin-exchange-react-hooks-websockets/static/css/main.dfa67e62.chunk.css.map",
-    "static/js/2.dca73793.chunk.js.LICENSE.txt": "/coin-exchange-react-hooks-websockets/static/js/2.dca73793.chunk.js.LICENSE.txt"
+    "static/js/2.315aaed6.chunk.js.LICENSE.txt": "/coin-exchange-react-hooks-websockets/static/js/2.315aaed6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.9e908134.js",
-    "static/js/2.dca73793.chunk.js",
+    "static/js/2.315aaed6.chunk.js",
     "static/css/main.dfa67e62.chunk.css",
-    "static/js/main.57d529ea.chunk.js"
+    "static/js/main.97a4b738.chunk.js"
   ]
 }

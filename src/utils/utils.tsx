@@ -1,4 +1,5 @@
 import { Currencies, TableRowData, Ticker } from '../models/models';
+import formatNumber from 'format-number';
 
 export const transform = (currencies: Currencies, data: Ticker): TableRowData => {
   return {
@@ -19,6 +20,9 @@ export const debug = (...args: string[]) => {
 export const formatValue = (value: string | number | null): string => {
   if (!value) return '—';
   if (typeof value === 'string') return value;
-  if (value > 0.000001) return String(value);
+
+  const formatter = formatNumber(/*{ integerSeparator: ' ', decimalsSeparator: ' ' }*/);
+
+  if (value > 0.000001) return formatter(value);
   return Number(value).toFixed(10);
 };
