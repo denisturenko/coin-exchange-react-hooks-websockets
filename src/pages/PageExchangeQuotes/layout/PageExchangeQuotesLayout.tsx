@@ -5,15 +5,22 @@ interface PageExchangeQuotesLayoutProps {
   showAllToggle: React.ReactElement;
   table: React.ReactElement;
   themeToggle: React.ReactElement;
+  webSocketsStats: React.ReactElement;
 }
 
-const PageExchangeQuotesLayout: React.FC<PageExchangeQuotesLayoutProps> = ({ showAllToggle, table, themeToggle }) => {
+const PageExchangeQuotesLayout: React.FC<PageExchangeQuotesLayoutProps> = ({
+  showAllToggle,
+  table,
+  themeToggle,
+  webSocketsStats,
+}) => {
   return (
     <div className={styles.root}>
       <div className={styles.wrapper}>
-        <h1>Exchange Quotes</h1>
+        <h1>Realtime Crypto Trading</h1>
         <div className={styles.header}>
           {showAllToggle}
+          {webSocketsStats}
           {themeToggle}
         </div>
         {table}

@@ -8,7 +8,7 @@ import useBodyClass from '../../hooks/use-body-class/useBodyClass';
 const LIMIT = 25;
 
 function PageExchangeQuotes() {
-  const { theme, limit, sortType, sortOrder, filteredData, onLimitToggle, onThemeToggle, isLightTheme, onSort } =
+  const { webSocketsStats, theme, limit, sortType, sortOrder, filteredData, onLimitToggle, onThemeToggle, isLightTheme, onSort } =
     useProps(LIMIT);
 
   useBodyClass(theme);
@@ -23,6 +23,7 @@ function PageExchangeQuotes() {
           onToggle={onThemeToggle}
         />
       }
+      webSocketsStats={<i>Websocket events per second: {webSocketsStats}</i>}
       showAllToggle={
         <ToggleLink
           showPrimary={!!limit}

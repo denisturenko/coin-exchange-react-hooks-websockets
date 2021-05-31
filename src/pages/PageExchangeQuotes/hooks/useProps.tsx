@@ -7,6 +7,7 @@ import { transform } from '../../../utils/utils';
 import themes from '../../../themes/themes.module.css';
 
 interface State {
+  webSocketsStats: number;
   data: TablePropsData;
   sortType: SortTypeEnum;
   sortOrder: SortOrderEnum;
@@ -30,6 +31,7 @@ interface UsePropsReturn extends State {
 const useProps = (limit?: number): UsePropsReturn => {
   const [state, setState] = useState<State>({
     data: {},
+    webSocketsStats: 0,
     sortType: SortTypeEnum.BID,
     sortOrder: SortOrderEnum.DESC,
     limit,
@@ -49,7 +51,13 @@ const useProps = (limit?: number): UsePropsReturn => {
      * Will be re-rendered every 200 ms
      */
     if (deltaTime > 200) {
-      setState(prev => ({ ...prev, data: { ...prev.data, ...tmp.current } }));
+      const webSocketsStats = Math.round((_.size(tmp.current) / deltaTime) * 1000);
+
+      setState(prev => ({
+        ...prev,
+        webSocketsStats,
+        data: { ...prev.data, ...tmp.current },
+      }));
       previousTimeRef.current = time;
     }
     requestRef.current = requestAnimationFrame(animate);
