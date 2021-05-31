@@ -23,6 +23,8 @@ interface UsePropsReturn extends State {
   onThemeToggle: () => void;
 }
 
+const startTime = Date.now();
+
 /**
  * All business logic is encapsulated inside of this hook
  * It recalculate and returns props and callbacks for views
@@ -44,6 +46,7 @@ const useProps = (limit?: number): UsePropsReturn => {
   const tmp = useRef<TablePropsData>({});
   const requestRef = React.useRef<number>(0);
   const previousTimeRef = React.useRef<number>(0);
+  const webSocketsEventsCntRef = React.useRef<number>(0);
 
   const animate = useCallback((time: number) => {
     const deltaTime = time - previousTimeRef.current;
@@ -51,13 +54,15 @@ const useProps = (limit?: number): UsePropsReturn => {
      * Will be re-rendered every 200 ms
      */
     if (deltaTime > 200) {
-      const webSocketsStats = Math.round((_.size(tmp.current) / deltaTime) * 1000);
+      setState(prev => {
+        const webSocketsStats = Math.round((webSocketsEventsCntRef.current / (Date.now() - startTime)) * 1000);
 
-      setState(prev => ({
-        ...prev,
-        webSocketsStats,
-        data: { ...prev.data, ...tmp.current },
-      }));
+        return {
+          ...prev,
+          webSocketsStats,
+          data: { ...prev.data, ...tmp.current },
+        };
+      });
       previousTimeRef.current = time;
     }
     requestRef.current = requestAnimationFrame(animate);
@@ -76,6 +81,7 @@ const useProps = (limit?: number): UsePropsReturn => {
   const handleChangeTicker = useCallback((currencies: Currencies, data: Ticker) => {
     const rowData = transform(currencies, data);
     tmp.current[rowData.id] = rowData;
+    webSocketsEventsCntRef.current++;
   }, []);
 
   useEffect(() => {

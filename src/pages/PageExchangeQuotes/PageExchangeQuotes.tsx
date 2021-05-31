@@ -23,7 +23,7 @@ function PageExchangeQuotes() {
           onToggle={onThemeToggle}
         />
       }
-      webSocketsStats={<i>Websocket events per second: {webSocketsStats}</i>}
+      webSocketsStats={<i>Websocket events per second (average): {webSocketsStats}</i>}
       showAllToggle={
         <ToggleLink
           showPrimary={!!limit}
