@@ -16,6 +16,7 @@ interface CurrenciesStore {
 }
 
 type Callback = (currencies: Currencies, data: Ticker) => void;
+type SymbolsCallback = () => void;
 
 export class ServiceWebsocket {
   private requestId: number = 0;
@@ -23,6 +24,7 @@ export class ServiceWebsocket {
   private socket: WebSocket;
   private currenciesStore: CurrenciesStore = {};
   private callbacks: Array<Callback> = [];
+  private symbolsCallbacks: Array<SymbolsCallback> = [];
 
   constructor(url: string) {
     this.socket = new WebSocket(url);
@@ -30,6 +32,15 @@ export class ServiceWebsocket {
     this.socket.addEventListener('open', this.handleOpen);
     this.socket.addEventListener('message', this.handleMessage);
   }
+
+  onLoadSymbols = (fn: SymbolsCallback) => {
+    this.symbolsCallbacks.push(fn);
+  };
+
+  offLoadSymbols = (fn: SymbolsCallback) => {
+    const idx = this.symbolsCallbacks.indexOf(fn);
+    if (idx !== -1) this.symbolsCallbacks.splice(idx, 1);
+  };
 
   onChange = (fn: Callback) => {
     this.callbacks.push(fn);
@@ -42,6 +53,7 @@ export class ServiceWebsocket {
 
   private handleOpen = async () => {
     const symbols = await this.getSymbols();
+    this.symbolsCallbacks.forEach(callback => callback());
     symbols.result.forEach((currencies, idx) => {
       this.currenciesStore[currencies.id] = currencies;
       this.subscribeTicker(currencies.id).catch(e => {

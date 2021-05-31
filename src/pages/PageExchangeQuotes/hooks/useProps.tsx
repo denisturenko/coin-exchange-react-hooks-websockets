@@ -7,6 +7,7 @@ import { transform } from '../../../utils/utils';
 import themes from '../../../themes/themes.module.css';
 
 interface State {
+  loadingCurrencyList?: boolean;
   webSocketsStats: number;
   data: TablePropsData;
   sortType: SortTypeEnum;
@@ -38,6 +39,7 @@ const useProps = (limit?: number): UsePropsReturn => {
     sortOrder: SortOrderEnum.DESC,
     limit,
     theme: themes.lightTheme,
+    loadingCurrencyList: undefined,
   });
 
   /**
@@ -84,12 +86,21 @@ const useProps = (limit?: number): UsePropsReturn => {
     webSocketsEventsCntRef.current++;
   }, []);
 
+  const handleLoadSymbols = useCallback(() => {
+    setState(prev => ({ ...prev, loadingCurrencyList: false }));
+  }, []);
+
   useEffect(() => {
+    setState(prev => ({ ...prev, loadingCurrencyList: true }));
     const serviceWebsocket = new ServiceWebsocket('wss://api.exchange.bitcoin.com/api/2/ws');
     serviceWebsocket.onChange(handleChangeTicker);
+    serviceWebsocket.onLoadSymbols(handleLoadSymbols);
 
-    return () => serviceWebsocket.offChange(handleChangeTicker);
-  }, [handleChangeTicker]);
+    return () => {
+      serviceWebsocket.offChange(handleChangeTicker);
+      serviceWebsocket.offLoadSymbols(handleLoadSymbols);
+    };
+  }, [handleChangeTicker, handleLoadSymbols]);
 
   /**
    * Preparing data for table:
